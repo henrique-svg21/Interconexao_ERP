@@ -3,6 +3,7 @@ import time
 from datetime import datetime, timedelta
 import pyautogui as py
 from dotenv import load_dotenv
+import sys
 
 # Selenium Imports
 from selenium import webdriver
@@ -38,34 +39,52 @@ browser = webdriver.Chrome(service=servicce, options=chrome_options)
 
 email = os.getenv("email")
 password = os.getenv("password")
+
+try:    
+    # logging into google   
+    browser.get("https://accounts.google.com/")
+
+    email_input = WebDriverWait(browser, 30).until(
+        EC.visibility_of_element_located((By.ID, "identifierId"))
+    )
+    email_input.send_keys(email + Keys.ENTER)
+
+    password_input = WebDriverWait(browser, 30).until(
+        EC.visibility_of_element_located((By.XPATH, "//input[@type='password']"))
+    )
+    time.sleep(1)
+    password_input.send_keys(password + Keys.ENTER)
+    time.sleep(5)
     
-# logging into google
-   
-browser.get("https://accounts.google.com/")
+    browser.get("https://forms.gle/SGy2pnLA9LdQfXeSA") #opens the form's link (test)
+    file_path = r"C:\Users\henrique_schorck\Documents\Base_dados.xlsx"
 
-email_input = WebDriverWait(browser, 30).until(
-    EC.visibility_of_element_located((By.ID, "identifierId"))
-)
-email_input.send_keys(email + Keys.ENTER)
+    # opening windows explorer and finding + opening the file
+    py.hotkey('win', 'e')
+    time.sleep(3)
+    py.hotkey('ctrl', 'f')
+    time.sleep(3)
+    py.write(file_path)
+    time.sleep(5)
+    py.dragTo(514,229)
+    time.sleep(3)
+    py.leftClick()
+    py.leftClick()
+    time.sleep(5)
 
-password_input = WebDriverWait(browser, 30).until(
-    EC.visibility_of_element_located((By.XPATH, "//input[@type='password']"))
-)
-time.sleep(1)
-password_input.send_keys(password + Keys.ENTER)
-time.sleep(5)
+    #getting back to forms
+    py.hotkey('alt','tab')
+    time.sleep(3)
+    py.hotkey('alt','f4')
+    time.sleep(3)
+    py.hotkey('alt','tab')
+    time.sleep(3)
+
+    #DATA INSERTION IN THE FILE
+    py.press('tab', presses=2,)
     
-browser.get("https://forms.gle/SGy2pnLA9LdQfXeSA") #opens the form's link (test)
-
-# opening windows explorer and finding + opening the file
-py.hotkey('win', 'e')
-time.sleep(3)
-py.hotkey('ctrl', 'f')
-time.sleep(3)
-py.write("Base_dados.xlsx")
-time.sleep(5)
-py.dragTo(490,225)
-time.sleep(3)
-py.leftClick()
-py.leftClick()
+    
+except py.FailSafeException:
+    print('Fail-safe activated. Exiting program.')
+    sys.exit() 
 
