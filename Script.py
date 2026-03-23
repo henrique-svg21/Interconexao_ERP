@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import pyautogui as py
 from dotenv import load_dotenv
 import sys
+import openpyxl
 
 # Selenium Imports
 from selenium import webdriver
@@ -57,6 +58,14 @@ try:
     time.sleep(5)
     
     browser.get("https://forms.gle/SGy2pnLA9LdQfXeSA") #opens the form's link (test)
+
+    # Usage
+    def read_excel_data(file_path, sheet_name, cell_coordinate):
+        workbook = openpyxl.load_workbook(file_path)
+        sheet = workbook[sheet_name]
+        cell_value = sheet[cell_coordinate].value
+        return cell_value
+    
     file_path = r"C:\Users\henrique_schorck\Documents\Base_dados.xlsx"
 
     # opening windows explorer and finding + opening the file
@@ -80,67 +89,53 @@ try:
     py.hotkey('alt','tab')
     time.sleep(3)
 
-    #confirmin email
-    py.press('tab', presses=2, interval=0.5)
-    time.sleep(2)
+    #confirming email
     py.dragTo(390,640)
-    time.sleep(1)
+    time.sleep(0.5)
     py.leftClick()
+    time.sleep(1)
 
     #DATA INSERTION IN THE FILE
+    for i in range (1,10): 
+        if i > 1:
+            py.press('tab')
+            time.sleep(1) 
+        one_value = read_excel_data(file_path, 'Página1', 'B2')
+        py.press('tab')
+        time.sleep(1)
+        py.press('enter')
+        time.sleep(1)
+        py.press('down', presses=i, interval=0.3)
+        time.sleep(2)
+        py.press('enter')
+        time.sleep(1)
+        py.press('tab')
+        time.sleep(1)
+        py.typewrite(str(one_value))    
+        time.sleep(1)
+        py.press('tab', presses=2, interval=0.5)
+        time.sleep(1)
 
-    #first id
-    py.press('tab')
-    time.sleep(1)
-    py.press('enter')
-    time.sleep(2)
-    py.press('down')
-    time.sleep(2)
-    py.press('enter')
-    time.sleep(1)
-    py.press('tab')
-    time.sleep(1)
-    py.write('40')
-    time.sleep(1)
-    py.press('tab', presses=2, interval=0.5)
-    time.sleep(1)
-    py.dragTo(390,372)
-    time.sleep(1)
-    py.leftClick()
-    time.sleep(1)
-    py.press('tab', presses=2, interval=0.5)
-    time.sleep(1)
-    py.press('enter')
-    time.sleep(1)
+        if one_value >= 40: #OBJECTIVE REACHED
+            py.dragTo(390,372)
+            time.sleep(1)
+            py.leftClick()
+            time.sleep(1)
+            py.press('tab', presses=2, interval=0.5)
+            time.sleep(1)
+            py.press('enter')
+            time.sleep(1)
 
-    #second id
-    py.press('tab', presses=2, interval=0.3)
-    time.sleep(1)
-    py.press('enter')
-    time.sleep(2)
-    py.press('down', presses=2, interval=0.3)
-    time.sleep(1)
-    py.press('enter')
-    time.sleep(1)
-    py.press('tab')
-    time.sleep(1)
-    py.write('39')
-    time.sleep(1)
-    py.press('tab', presses=2, interval=0.3)
-    time.sleep(1)
-    py.dragTo(390, 587)
-    time.sleep(1)
-    py.leftClick()
-    time.sleep(1)
-    py.press('tab', presses=2, interval=0.3)
-    time.sleep(1)
-    py.press('enter')
-    time.sleep(1)
+        else: #OBJECTIVE NOT REACHED
+            py.dragTo(390, 587)
+            time.sleep(1)
+            py.leftClick()
+            time.sleep(1)
+            py.press('tab', presses=3, interval=0.5)
+            time.sleep(1)
+            py.press('enter')
+            time.sleep(1)
 
-
-
-    
-    
 except py.FailSafeException:
     print('Fail-safe activated. Exiting program.')
     sys.exit() 
