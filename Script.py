@@ -118,7 +118,27 @@ try:
     time.sleep(1)
     py.press('enter')
     time.sleep(2)
-    py.press('down')
+    py.press('down', presses=2, interval=0.3)
+    time.sleep(1)
+    py.press('enter')
+    time.sleep(1)
+    py.press('tab')
+    time.sleep(1)
+    py.write('39')
+    time.sleep(1)
+    py.press('tab', presses=2, interval=0.3)
+    time.sleep(1)
+    py.dragTo(390, 587)
+    time.sleep(1)
+    py.leftClick()
+    time.sleep(1)
+    py.press('tab', presses=2, interval=0.3)
+    time.sleep(1)
+    py.press('enter')
+    time.sleep(1)
+
+
+
     
     
 except py.FailSafeException:
