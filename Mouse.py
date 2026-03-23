@@ -16,5 +16,5 @@ except KeyboardInterrupt:
 #x = 390
 #y = 640
 
-#YES: 390,444
-#NO: 391,482
+#YES: 390,372
+#NO: 390, 412

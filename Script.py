@@ -88,11 +88,15 @@ try:
     py.leftClick()
 
     #DATA INSERTION IN THE FILE
+
+    #first id
     py.press('tab')
     time.sleep(1)
     py.press('enter')
-    time.sleep(1)
-    py.press('right')
+    time.sleep(2)
+    py.press('down')
+    time.sleep(2)
+    py.press('enter')
     time.sleep(1)
     py.press('tab')
     time.sleep(1)
@@ -100,7 +104,7 @@ try:
     time.sleep(1)
     py.press('tab', presses=2, interval=0.5)
     time.sleep(1)
-    py.dragTo(390,444)
+    py.dragTo(390,372)
     time.sleep(1)
     py.leftClick()
     time.sleep(1)
@@ -108,6 +112,13 @@ try:
     time.sleep(1)
     py.press('enter')
     time.sleep(1)
+
+    #second id
+    py.press('tab', presses=2, interval=0.3)
+    time.sleep(1)
+    py.press('enter')
+    time.sleep(2)
+    py.press('down')
     
     
 except py.FailSafeException:
