@@ -10,11 +10,11 @@ try:
 except KeyboardInterrupt:
     print('\n')
 
-#MOUSE: 
+#MOUSE: 381,156
 
 #CONFIRMING EMAIL
 #x = 390
-#y = 660
+#y = 640
 
 #YES: 390,444
 #NO: 391,482

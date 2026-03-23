@@ -66,7 +66,7 @@ try:
     time.sleep(3)
     py.write(file_path)
     time.sleep(5)
-    py.dragTo(514,229)
+    py.dragTo(381,156)
     time.sleep(3)
     py.leftClick()
     py.leftClick()
@@ -80,8 +80,34 @@ try:
     py.hotkey('alt','tab')
     time.sleep(3)
 
+    #confirmin email
+    py.press('tab', presses=2, interval=0.5)
+    time.sleep(2)
+    py.dragTo(390,640)
+    time.sleep(1)
+    py.leftClick()
+
     #DATA INSERTION IN THE FILE
-    py.press('tab', presses=2,)
+    py.press('tab')
+    time.sleep(1)
+    py.press('enter')
+    time.sleep(1)
+    py.press('right')
+    time.sleep(1)
+    py.press('tab')
+    time.sleep(1)
+    py.write('40')
+    time.sleep(1)
+    py.press('tab', presses=2, interval=0.5)
+    time.sleep(1)
+    py.dragTo(390,444)
+    time.sleep(1)
+    py.leftClick()
+    time.sleep(1)
+    py.press('tab', presses=2, interval=0.5)
+    time.sleep(1)
+    py.press('enter')
+    time.sleep(1)
     
     
 except py.FailSafeException:
