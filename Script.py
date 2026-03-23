@@ -16,10 +16,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+def StringConcat():
+            return "B" + str(i + 1)
 load_dotenv() #load .env file, where email and password are stored
 py.size() #define screen size
 (1366,768)
-py.FAILSAFE = True #just make sure it is enabled
+py.FailSafeException = True #just make sure it is enable
 
 chrome_options = Options()
 
@@ -68,18 +70,19 @@ try:
     
     file_path = r"C:\Users\henrique_schorck\Documents\Base_dados.xlsx"
 
+    
     # opening windows explorer and finding + opening the file
     py.hotkey('win', 'e')
-    time.sleep(3)
+    time.sleep(2)
     py.hotkey('ctrl', 'f')
-    time.sleep(3)
+    time.sleep(1.5)
     py.write(file_path)
-    time.sleep(5)
-    py.dragTo(381,156)
     time.sleep(3)
+    py.dragTo(381,156)
+    time.sleep(2)
     py.leftClick()
     py.leftClick()
-    time.sleep(5)
+    time.sleep(3.5)
 
     #getting back to forms
     py.hotkey('alt','tab')
@@ -99,8 +102,8 @@ try:
     for i in range (1,10): 
         if i > 1:
             py.press('tab')
-            time.sleep(1) 
-        one_value = read_excel_data(file_path, 'Página1', 'B2')
+            time.sleep(1)
+        one_value = read_excel_data(file_path, 'Página1', StringConcat())
         py.press('tab')
         time.sleep(1)
         py.press('enter')
@@ -117,11 +120,20 @@ try:
         time.sleep(1)
 
         if one_value >= 40: #OBJECTIVE REACHED
-            py.dragTo(390,372)
+            if i > 1:
+                py.press('tab')
+            if i < 2:
+                py.dragTo(390,372)
+            else:
+                py.dragTo(390, 516)
+
             time.sleep(1)
             py.leftClick()
             time.sleep(1)
-            py.press('tab', presses=2, interval=0.5)
+            if i < 2:
+                py.press('tab', presses=2, interval=0.5)
+            else:
+                py.press('tab', presses=3, interval=0.5)
             time.sleep(1)
             py.press('enter')
             time.sleep(1)
@@ -131,7 +143,7 @@ try:
             time.sleep(1)
             py.leftClick()
             time.sleep(1)
-            py.press('tab', presses=3, interval=0.5)
+            py.press('tab', presses=2, interval=0.5)
             time.sleep(1)
             py.press('enter')
             time.sleep(1)

@@ -18,3 +18,7 @@ except KeyboardInterrupt:
 
 #YES: 390,372
 #NO: 390, 587
+
+#beyond 2:
+#YES: 390, 516
+#NO: 390, 556
