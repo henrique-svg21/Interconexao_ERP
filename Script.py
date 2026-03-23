@@ -15,7 +15,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 load_dotenv() #load .env file, where email and password are stored
-py.mouseInfo
+py.size() #define screen size
+(1366,768)
+py.FAILSAFE = True #just make sure it is enabled
 
 chrome_options = Options()
 
@@ -61,5 +63,9 @@ time.sleep(3)
 py.hotkey('ctrl', 'f')
 time.sleep(3)
 py.write("Base_dados.xlsx")
-
+time.sleep(5)
+py.dragTo(490,225)
+time.sleep(3)
+py.leftClick()
+py.leftClick()
 
