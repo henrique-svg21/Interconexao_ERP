@@ -68,32 +68,13 @@ try:
     
     file_path = r"C:\Users\henrique_schorck\Documents\Base_dados.xlsx"
 
-    py.hotkey('win', 'e')
-    time.sleep(2)
-    py.hotkey('ctrl', 'f')
-    time.sleep(1.5)
-    py.write(file_path)
-    time.sleep(3)
-    py.dragTo(381,156)
-    time.sleep(2)
-    py.leftClick()
-    py.leftClick()
-    time.sleep(3.5)
-
-    py.hotkey('alt','tab')
-    time.sleep(3)
-    py.hotkey('alt','f4')
-    time.sleep(3)
-    py.hotkey('alt','tab')
-    time.sleep(3)
-
-    py.dragTo(390,640)
+    py.press('tab', presses=2, interval=0.2)
     time.sleep(0.5)
-    py.leftClick()
+    py.press('space')
     time.sleep(DELAY)
 
     # LAÇO FOR COM TEMPOS DINÂMICOS
-    for i in range (1,10): 
+    for i in range (1,10):       
         if i > 1:
             py.press('tab')
             time.sleep(DELAY)
@@ -117,18 +98,13 @@ try:
         py.typewrite(str(one_value))    
         time.sleep(DELAY)
         
-        py.press('tab', presses=2, interval=0.5)
-        time.sleep(DELAY)
-
         if one_value >= 40: 
             if i > 1:
                 py.press('tab')
-            if i < 2:
-                py.dragTo(390,372)
-            else:
-                py.dragTo(390, 516)
             time.sleep(DELAY)
-            py.leftClick()
+            py.press('tab')
+            time.sleep(DELAY)
+            py.press('space')
             time.sleep(DELAY)
             
             if i < 2:
@@ -140,12 +116,16 @@ try:
             time.sleep(DELAY)
 
         else: 
-            py.dragTo(390, 587)
-            time.sleep(DELAY)
-            py.leftClick()
-            time.sleep(DELAY)
             py.press('tab', presses=2, interval=0.5)
             time.sleep(DELAY)
+            py.press('space')
+            time.sleep(DELAY)
+            if i < 2:
+                py.press('tab')
+                time.sleep(DELAY)
+            else:
+                py.press('tab', presses=2, interval=0.5)
+                time.sleep(DELAY)
             py.press('enter')
             time.sleep(DELAY)
 
