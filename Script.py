@@ -74,7 +74,7 @@ try:
     time.sleep(DELAY)
 
     # LAÇO FOR COM TEMPOS DINÂMICOS
-    for i in range (1,10):       
+    for i in range (1,11):       
         if i > 1:
             py.press('tab')
             time.sleep(DELAY)
