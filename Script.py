@@ -17,7 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # VARIÁVEL DE CONTROLE DE TEMPO (Altere aqui para mudar todos de uma vez)
-DELAY = 2
+DELAY = 1
 
 def StringConcat():
     return "B" + str(i + 1)
@@ -99,9 +99,6 @@ try:
         time.sleep(DELAY)
         
         if one_value >= 40: 
-            if i > 1:
-                py.press('tab')
-            time.sleep(DELAY)
             py.press('tab')
             time.sleep(DELAY)
             py.press('space')
@@ -120,6 +117,7 @@ try:
             time.sleep(DELAY)
             py.press('space')
             time.sleep(DELAY)
+
             if i < 2:
                 py.press('tab')
                 time.sleep(DELAY)
